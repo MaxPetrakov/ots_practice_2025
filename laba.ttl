@@ -1,0 +1,260 @@
+@prefix : <http://www.semanticweb.org/petra/ontologies/2025/9/Git/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/petra/ontologies/2025/9/Git/> .
+
+<http://www.semanticweb.org/petra/ontologies/2025/9/Git> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#belongsToBranch
+:belongsToBranch rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Commit ;
+                 rdfs:range :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#containsBranch
+:containsBranch rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Repository ;
+                rdfs:range :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#containsFileChange
+:containsFileChange rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :Commit ;
+                    rdfs:range :FileChange .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasAuthor
+:hasAuthor rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Commit ;
+           rdfs:range :User .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasCommitter
+:hasCommitter rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Commit ;
+              rdfs:range :User .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasContributor
+:hasContributor rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Repository ;
+                rdfs:range :User .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasDefaultBranch
+:hasDefaultBranch rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Repository ;
+                  rdfs:range :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasOwner
+:hasOwner rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Repository ;
+          rdfs:range :User .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasParentCommit
+:hasParentCommit rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Commit ;
+                 rdfs:range :Commit .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#pointsToCommit
+:pointsToCommit rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Branch ;
+                rdfs:range :Commit .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#filePath
+:filePath rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :FileChange ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasEmail
+:hasEmail rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :User ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasHash
+:hasHash rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Commit ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasMessage
+:hasMessage rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Commit ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :GitEntity ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#hasTimestamp
+:hasTimestamp rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Commit ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#isMerged
+:isMerged rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Branch ;
+          rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#Branch
+:Branch rdf:type owl:Class ;
+        rdfs:subClassOf :GitEntity .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#Commit
+:Commit rdf:type owl:Class ;
+        rdfs:subClassOf :GitEntity .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#DevelopBranch
+:DevelopBranch rdf:type owl:Class ;
+               rdfs:subClassOf :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#FeatureBranch
+:FeatureBranch rdf:type owl:Class ;
+               rdfs:subClassOf :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#FileChange
+:FileChange rdf:type owl:Class ;
+            rdfs:subClassOf :GitEntity .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#GitEntity
+:GitEntity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#HotfixBranch
+:HotfixBranch rdf:type owl:Class ;
+              rdfs:subClassOf :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#LocalRepository
+:LocalRepository rdf:type owl:Class ;
+                 rdfs:subClassOf :Repository .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#MainBranch
+:MainBranch rdf:type owl:Class ;
+            rdfs:subClassOf :Branch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#RemoteRepository
+:RemoteRepository rdf:type owl:Class ;
+                  rdfs:subClassOf :Repository .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#Repository
+:Repository rdf:type owl:Class ;
+            rdfs:subClassOf :GitEntity .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#User
+:User rdf:type owl:Class ;
+      rdfs:subClassOf :GitEntity .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#branch_develop
+:branch_develop rdf:type owl:NamedIndividual ,
+                         :DevelopBranch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#branch_feature_login
+:branch_feature_login rdf:type owl:NamedIndividual ,
+                               :FeatureBranch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#branch_main
+:branch_main rdf:type owl:NamedIndividual ,
+                      :MainBranch .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#commit_bug_fix
+:commit_bug_fix rdf:type owl:NamedIndividual ,
+                         :Commit .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#commit_feature_added
+:commit_feature_added rdf:type owl:NamedIndividual ,
+                               :Commit .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#commit_initial
+:commit_initial rdf:type owl:NamedIndividual ,
+                         :Commit .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#repo_linux_kernel
+:repo_linux_kernel rdf:type owl:NamedIndividual ,
+                            :RemoteRepository .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#repo_my_project
+:repo_my_project rdf:type owl:NamedIndividual ,
+                          :LocalRepository .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#user_alice_contributor
+:user_alice_contributor rdf:type owl:NamedIndividual ,
+                                 :User .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#user_john_developer
+:user_john_developer rdf:type owl:NamedIndividual ,
+                              :User .
+
+
+###  http://www.semanticweb.org/petra/ontologies/2025/9/Git#user_linus_torvalds
+:user_linus_torvalds rdf:type owl:NamedIndividual ,
+                              :User .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
